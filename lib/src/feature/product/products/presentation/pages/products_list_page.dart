@@ -2,10 +2,10 @@ import 'dart:developer';
 
 import 'package:fake_commerce/src/core/router/routers.dart';
 import 'package:fake_commerce/src/core/state/base_state.dart';
+import 'package:fake_commerce/src/core/widgets/shimmer_listview_builder.dart';
 import 'package:fake_commerce/src/feature/category/presentation/provider/category_list_provider.dart';
 import 'package:fake_commerce/src/feature/category/presentation/widgets/category_loading_shimmer.dart';
 import 'package:fake_commerce/src/feature/product/products/presentation/riverpod/providers.dart';
-import 'package:fake_commerce/src/feature/product/products/presentation/widget/products_loading_shimmer.dart';
 import 'package:fake_commerce/src/feature/product/root/data/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -60,7 +60,7 @@ class _ProductListPageState extends ConsumerState<ProductListPage> {
 
           /// Product List
           state is LoadingState
-              ? const Expanded(child: ProductsLoadingShimmer())
+              ? const Expanded(child: ShimmerListViewBuilder())
               : state is SuccessState<List<ProductModel>>
                   ? Expanded(
                       child: RefreshIndicator(
